@@ -14,7 +14,7 @@ import {
   Upload,
   Search,
 } from "lucide-react"
-import { ParticleBackground } from "@/components/particle-field"
+import { CircuitBackground } from "@/components/backgrounds/circuit-background"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -22,29 +22,31 @@ import { Input } from "@/components/ui/input"
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <ParticleBackground />
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <CircuitBackground />
+      </div>
 
       {/* Main Content */}
       <div className="relative z-10">
         {/* Header */}
-        <header className="border-b border-primary/10 bg-background/50 backdrop-blur-xl">
+        <header className="border-b border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl">
           <div className="container flex h-16 items-center justify-between px-4">
             <div className="flex items-center gap-4">
-              <h1 className="text-xl font-bold text-primary">Cyber Bank</h1>
+              <h1 className="text-xl font-bold text-[#00f2fe]">Cyber Bank</h1>
               <nav className="hidden md:block">
                 <ul className="flex gap-4">
                   <li>
-                    <a href="#" className="text-sm text-primary/70 hover:text-primary transition-colors">
+                    <a href="#" className="text-sm text-[#00f2fe]/70 hover:text-[#00f2fe] transition-colors">
                       Overview
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-sm text-primary/70 hover:text-primary transition-colors">
+                    <a href="#" className="text-sm text-[#00f2fe]/70 hover:text-[#00f2fe] transition-colors">
                       Transactions
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-sm text-primary/70 hover:text-primary transition-colors">
+                    <a href="#" className="text-sm text-[#00f2fe]/70 hover:text-[#00f2fe] transition-colors">
                       Analytics
                     </a>
                   </li>
@@ -53,13 +55,13 @@ export default function DashboardPage() {
             </div>
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-                <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-primary text-[10px] font-bold leading-4 text-primary-foreground">
+                <Bell className="h-5 w-5 text-[#00f2fe]" />
+                <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-[#00f2fe] text-[10px] font-bold leading-4 text-primary-foreground">
                   3
                 </span>
               </Button>
               <Button variant="ghost" size="icon">
-                <Shield className="h-5 w-5" />
+                <Shield className="h-5 w-5 text-[#00f2fe]" />
               </Button>
             </div>
           </div>
@@ -88,40 +90,40 @@ export default function DashboardPage() {
           {/* Balance Cards */}
           <div className="mb-8 grid gap-4 md:grid-cols-3">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-              <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+              <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow hover:border-[#00f2fe]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-primary/90">Total Balance</CardTitle>
-                  <CreditCard className="h-4 w-4 text-primary" />
+                  <CardTitle className="text-sm font-medium text-[#00f2fe]/90">Total Balance</CardTitle>
+                  <CreditCard className="h-4 w-4 text-[#00f2fe]" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-primary">$12,450.80</div>
-                  <p className="text-xs text-primary/70">+2.5% from last month</p>
+                  <div className="text-2xl font-bold text-[#00f2fe]">₹12,450.80</div>
+                  <p className="text-xs text-[#00f2fe]/70">+2.5% from last month</p>
                 </CardContent>
               </Card>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-              <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+              <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow hover:border-[#00f2fe]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-primary/90">Monthly Spending</CardTitle>
-                  <Activity className="h-4 w-4 text-primary" />
+                  <CardTitle className="text-sm font-medium text-[#00f2fe]/90">Monthly Spending</CardTitle>
+                  <Activity className="h-4 w-4 text-[#00f2fe]" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-primary">$4,250.00</div>
-                  <p className="text-xs text-primary/70">+12% from last month</p>
+                  <div className="text-2xl font-bold text-[#00f2fe]">₹4,250.00</div>
+                  <p className="text-xs text-[#00f2fe]/70">+12% from last month</p>
                 </CardContent>
               </Card>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+              <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow hover:border-[#00f2fe]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-primary/90">Security Score</CardTitle>
-                  <Lock className="h-4 w-4 text-primary" />
+                  <CardTitle className="text-sm font-medium text-[#00f2fe]/90">Security Score</CardTitle>
+                  <Lock className="h-4 w-4 text-[#00f2fe]" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-primary">92/100</div>
-                  <p className="text-xs text-primary/70">Strong protection active</p>
+                  <div className="text-2xl font-bold text-[#00f2fe]">92/100</div>
+                  <p className="text-xs text-[#00f2fe]/70">Strong protection active</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -130,10 +132,10 @@ export default function DashboardPage() {
           {/* Recent Activity and Security Alerts */}
           <div className="grid gap-4 md:grid-cols-2">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
-              <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+              <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow hover:border-[#00f2fe]">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5 text-primary" />
+                    <BarChart3 className="h-5 w-5 text-[#00f2fe]" />
                     Recent Activity
                   </CardTitle>
                 </CardHeader>
@@ -141,14 +143,14 @@ export default function DashboardPage() {
                   <div className="space-y-4">
                     {[1, 2, 3].map((i) => (
                       <div key={i} className="flex items-center gap-4">
-                        <div className="rounded-full bg-primary/10 p-2">
-                          <Upload className="h-4 w-4 text-primary" />
+                        <div className="rounded-full bg-[#00f2fe]/10 p-2">
+                          <Upload className="h-4 w-4 text-[#00f2fe]" />
                         </div>
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-primary/90">Payment to John Doe</p>
-                          <p className="text-xs text-primary/70">2 minutes ago</p>
+                          <p className="text-sm font-medium text-[#00f2fe]/90">Payment to John Doe</p>
+                          <p className="text-xs text-[#00f2fe]/70">2 minutes ago</p>
                         </div>
-                        <div className="text-sm font-medium text-primary">-$250.00</div>
+                        <div className="text-sm font-medium text-[#00f2fe]">-₹250.00</div>
                       </div>
                     ))}
                   </div>
@@ -157,10 +159,10 @@ export default function DashboardPage() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
-              <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+              <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow hover:border-[#00f2fe]">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <AlertTriangle className="h-5 w-5 text-primary" />
+                    <AlertTriangle className="h-5 w-5 text-[#00f2fe]" />
                     Security Alerts
                   </CardTitle>
                 </CardHeader>
@@ -168,12 +170,12 @@ export default function DashboardPage() {
                   <div className="space-y-4">
                     {[1, 2].map((i) => (
                       <div key={i} className="flex items-center gap-4">
-                        <div className="rounded-full bg-primary/10 p-2">
-                          <Shield className="h-4 w-4 text-primary" />
+                        <div className="rounded-full bg-[#00f2fe]/10 p-2">
+                          <Shield className="h-4 w-4 text-[#00f2fe]" />
                         </div>
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-primary/90">Suspicious login attempt blocked</p>
-                          <p className="text-xs text-primary/70">5 minutes ago</p>
+                          <p className="text-sm font-medium text-[#00f2fe]/90">Suspicious login attempt blocked</p>
+                          <p className="text-xs text-[#00f2fe]/70">5 minutes ago</p>
                         </div>
                         <Button variant="outline" size="sm">
                           View
@@ -190,4 +192,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-

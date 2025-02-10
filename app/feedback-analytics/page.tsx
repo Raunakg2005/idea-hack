@@ -15,17 +15,17 @@ export default function FeedbackAnalyticsPage() {
 
       <div className="relative z-10">
         {/* Header */}
-        <header className="border-b border-primary/10 bg-background/50 backdrop-blur-xl">
+        <header className="border-b border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl">
           <div className="container flex h-16 items-center justify-between px-4">
             <div className="flex items-center gap-4">
-              <h1 className="flex items-center gap-2 text-xl font-bold text-primary">
+              <h1 className="flex items-center gap-2 text-xl font-bold text-[#00f2fe]">
                 <BarChart className="h-5 w-5" />
                 Feedback Analytics
               </h1>
             </div>
             <div className="flex items-center gap-4">
               <div className="relative w-64">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-primary/50" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#00f2fe]/50" />
                 <Input className="pl-10" placeholder="Search feedback..." />
               </div>
               <Button>Export Report</Button>
@@ -69,14 +69,14 @@ export default function FeedbackAnalyticsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+                <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_20px_#00f2fe] transition-transform hover:scale-105">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium text-primary/90">{stat.title}</CardTitle>
-                    <stat.icon className="h-4 w-4 text-primary" />
+                    <CardTitle className="text-sm font-medium text-[#00f2fe]/90">{stat.title}</CardTitle>
+                    <stat.icon className="h-4 w-4 text-[#00f2fe]" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                    <p className="text-xs text-primary/70">{stat.change} from last month</p>
+                    <div className="text-2xl font-bold text-[#00f2fe]">{stat.value}</div>
+                    <p className="text-xs text-[#00f2fe]/70">{stat.change} from last month</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -84,9 +84,9 @@ export default function FeedbackAnalyticsPage() {
           </div>
 
           {/* Sentiment Analysis */}
-          <Card className="mb-8 border-primary/10 bg-background/50 backdrop-blur-xl">
+          <Card className="mb-8 border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_20px_#00f2fe] transition-transform hover:scale-105">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-primary">
+              <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                 <PieChart className="h-5 w-5" />
                 Sentiment Analysis
               </CardTitle>
@@ -106,8 +106,8 @@ export default function FeedbackAnalyticsPage() {
                     className="space-y-2"
                   >
                     <div className="flex justify-between text-sm">
-                      <span className="text-primary/90">{sentiment.label}</span>
-                      <span className="text-primary">{sentiment.value}%</span>
+                      <span className="text-[#00f2fe]/90">{sentiment.label}</span>
+                      <span className="text-[#00f2fe]">{sentiment.value}%</span>
                     </div>
                     <Progress value={sentiment.value} className={`h-2 ${sentiment.color}`} />
                   </motion.div>
@@ -117,9 +117,9 @@ export default function FeedbackAnalyticsPage() {
           </Card>
 
           {/* Recent Feedback */}
-          <Card className="mb-8 border-primary/10 bg-background/50 backdrop-blur-xl">
+          <Card className="mb-8 border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_20px_#00f2fe] transition-transform hover:scale-105">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-primary">
+              <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                 <MessageSquare className="h-5 w-5" />
                 Recent Feedback
               </CardTitle>
@@ -151,18 +151,18 @@ export default function FeedbackAnalyticsPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + index * 0.1 }}
-                    className="rounded-lg border border-primary/10 bg-background/50 p-4"
+                    className="rounded-lg border border-[#00f2fe]/10 bg-background/50 p-4 hover:shadow-[0_0_20px_#00f2fe] transition-transform hover:scale-105"
                   >
                     <div className="flex items-center justify-between">
-                      <h3 className="font-medium text-primary">{feedback.user}</h3>
+                      <h3 className="font-medium text-[#00f2fe]">{feedback.user}</h3>
                       <div className="flex items-center gap-1">
                         {Array.from({ length: feedback.rating }).map((_, i) => (
-                          <ThumbsUp key={i} className="h-4 w-4 text-primary" />
+                          <ThumbsUp key={i} className="h-4 w-4 text-[#00f2fe]" />
                         ))}
                       </div>
                     </div>
-                    <p className="mt-2 text-sm text-primary/70">{feedback.message}</p>
-                    <p className="mt-2 text-xs text-primary/60">{feedback.time}</p>
+                    <p className="mt-2 text-sm text-[#00f2fe]/70">{feedback.message}</p>
+                    <p className="mt-2 text-xs text-[#00f2fe]/60">{feedback.time}</p>
                   </motion.div>
                 ))}
               </div>
@@ -170,9 +170,9 @@ export default function FeedbackAnalyticsPage() {
           </Card>
 
           {/* Trend Analysis */}
-          <Card className="border-primary/10 bg-background/50 backdrop-blur-xl">
+          <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_20px_#00f2fe] transition-transform hover:scale-105">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-primary">
+              <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                 <LineChart className="h-5 w-5" />
                 Feedback Trends
               </CardTitle>
@@ -207,8 +207,8 @@ export default function FeedbackAnalyticsPage() {
                     className="flex items-center justify-between"
                   >
                     <div>
-                      <h3 className="font-medium text-primary">{trend.category}</h3>
-                      <p className="text-sm text-primary/70">{trend.mentions} mentions</p>
+                      <h3 className="font-medium text-[#00f2fe]">{trend.category}</h3>
+                      <p className="text-sm text-[#00f2fe]/70">{trend.mentions} mentions</p>
                     </div>
                     <div className="text-right">
                       <span
@@ -220,7 +220,7 @@ export default function FeedbackAnalyticsPage() {
                       >
                         {trend.trend}
                       </span>
-                      <p className="mt-1 text-sm text-primary">{trend.change}</p>
+                      <p className="mt-1 text-sm text-[#00f2fe]">{trend.change}</p>
                     </div>
                   </motion.div>
                 ))}

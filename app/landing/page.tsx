@@ -1,157 +1,211 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Shield, Lock, Activity, ArrowRight, ChevronRight, Bell, User } from "lucide-react";
+import { Shield, Lock, Crosshair, Network, UserCheck, Server, Globe, Activity, Check } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-field";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function LandingPage() {
     return (
-        <div className="relative min-h-screen bg-gradient-to-b from-blue-800 via-black to-gray-900 text-white overflow-hidden">
-            {/* Particle Background */}
-            <ParticleBackground />
+        <div className="relative min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white overflow-hidden">
+            {/* Particle Background with Custom Color */}
+            <div className="absolute inset-0 z-0">
+                <ParticleBackground />
+            </div>
 
-            {/* Header */}
-            <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
-                <div className="container flex h-16 items-center justify-between px-4">
-                    <div className="flex items-center gap-4">
-                        <h1 className="flex items-center gap-2 text-xl font-extrabold text-white">
-                            <Shield className="h-6 w-6" />
-                            Cyber Bank
-                        </h1>
-                        <nav className="hidden md:block">
-                            <ul className="flex gap-6">
-                                <li><a href="#" className="text-sm hover:text-yellow-500">Home</a></li>
-                                <li><a href="#features" className="text-sm hover:text-yellow-500">Features</a></li>
-                                <li><a href="#how-it-works" className="text-sm hover:text-yellow-500">How It Works</a></li>
-                                <li><a href="#testimonials" className="text-sm hover:text-yellow-500">Testimonials</a></li>
-                                <li><a href="#faq" className="text-sm hover:text-yellow-500">FAQs</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon" className="relative">
-                            <Bell className="h-5 w-5" />
-                            <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-yellow-500 text-[10px] font-bold leading-4 text-black">3</span>
-                        </Button>
-                        <Button variant="ghost" size="icon">
-                            <User className="h-5 w-5" />
-                        </Button>
-                    </div>
-                </div>
-            </header>
+            
 
-            {/* Hero Section */}
+            {/* Hero Section with Core Value Proposition */}
             <section className="relative z-10 flex min-h-[80vh] items-center justify-center px-4">
                 <div className="container text-center">
-                    <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
-                        Secure Your Digital Banking
+                    <motion.h1 
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl mb-6"
+                    >
+                        <span className="bg-gradient-to-r from-[#00f2fe] to-white bg-clip-text text-transparent">
+                            AI-Powered Financial Protection
+                        </span>
                     </motion.h1>
-                    <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mx-auto mt-6 max-w-2xl text-lg">
-                        Experience the future of banking with cutting-edge security, real-time fraud detection, and personalized services.
+                    <motion.p 
+                        className="mx-auto mt-6 max-w-2xl text-lg text-gray-300"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        Next-generation fraud prevention combining generative AI, real-time analytics, and Aadhaar-based security
                     </motion.p>
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-                        <Button className="gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:opacity-90">Get Started <ArrowRight className="h-4 w-4" /></Button>
-                        <Button variant="outline" className="gap-2 hover:text-yellow-500 border-yellow-500">Learn More <ChevronRight className="h-4 w-4" /></Button>
-                    </motion.div>
                 </div>
             </section>
-
-            {/* Features Section */}
-            <section id="features" className="relative z-10 py-16">
+            {/* Core Capabilities Section */}
+            <section id="solutions" className="relative z-10 py-16">
                 <div className="container px-4">
-                    <motion.h2 initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-bold text-center">
-                        Key Features
+                    <motion.h2 
+                        className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#00f2fe] to-white bg-clip-text text-transparent"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                    >
+                        Enterprise-Grade Protection
                     </motion.h2>
-                    <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                        {[{ title: "Real-Time Fraud Detection", description: "Advanced AI-powered fraud detection to protect your transactions.", icon: Shield, color: "bg-blue-500" }, { title: "Cross-Border Monitoring", description: "Monitor international transactions with real-time risk assessment.", icon: Globe, color: "bg-green-500" }, { title: "Insider Threat Detection", description: "Proactively monitor and prevent internal security breaches.", icon: Lock, color: "bg-purple-500" }, { title: "Personalized Services", description: "Tailored financial solutions based on your unique needs.", icon: Activity, color: "bg-yellow-500" }].map((feature, index) => (
-                            <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-                                <Card className="border-none shadow-lg hover:scale-105 transform transition bg-gradient-to-tl from-gray-900 to-black backdrop-blur-xl">
-                                    <CardContent className="p-6">
-                                        <div className={`w-fit rounded-full p-3 ${feature.color}`}>
-                                            <feature.icon className="h-6 w-6 text-white" />
-                                        </div>
-                                        <h3 className="mt-4 font-bold text-white">{feature.title}</h3>
-                                        <p className="mt-2 text-sm text-gray-400">{feature.description}</p>
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                        {[
+                            { 
+                                icon: Crosshair, 
+                                title: "Real-Time Anomaly Detection", 
+                                description: "Generative AI models analyzing 50+ transaction parameters in <50ms" 
+                            },
+                            { 
+                                icon: Network, 
+                                title: "Cross-Border Intelligence", 
+                                description: "Dynamic risk scoring for international transactions across 150+ jurisdictions" 
+                            },
+                            { 
+                                icon: UserCheck, 
+                                title: "Insider Threat Radar", 
+                                description: "Employee behavior analysis with 99.8% accuracy in unauthorized access detection" 
+                            },
+                            { 
+                                icon: Server, 
+                                title: "Edge Processing", 
+                                description: "Aadhaar-secured transactions in low-connectivity regions" 
+                            }
+                        ].map((feature, index) => (
+                            <motion.div 
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                            >
+                                <Card className="bg-black/50 backdrop-blur-xl border-[#00f2fe]/20 hover:shadow-[0_0_30px_#00f2fe]/20 transition-transform transform hover:scale-105 hover:border-[#00f2fe] h-full">
+                                    <CardContent className="p-6 flex flex-col items-center text-center">
+                                        <feature.icon className="h-8 w-8 text-[#00f2fe] mb-4" />
+                                        <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                                        <p className="text-sm text-gray-300" dangerouslySetInnerHTML={{ __html: feature.description }} />
                                     </CardContent>
                                 </Card>
                             </motion.div>
-                        ))} 
-                    </div>
-                </div>
-            </section>
-
-            {/* How It Works */}
-            <section id="how-it-works" className="relative z-10 py-16">
-                <div className="container px-4 text-center">
-                    <h2 className="text-3xl font-bold">How It Works</h2>
-                    <p className="mt-4 text-lg">Our platform leverages Generative AI to combat financial crimes effectively.</p>
-                    <div className="mt-8 grid gap-8 sm:grid-cols-3">
-                        {["Upload Transaction Data", "Analyze Patterns in Real-Time", "Generate Actionable Insights"].map((step, index) => (
-                            <Card key={index} className="bg-gradient-to-br from-black to-gray-800 hover:shadow-lg transform hover:scale-105 transition">
-                                <CardContent>
-                                    <h3 className="text-xl font-bold text-white">{step}</h3>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonials */}
-            <section id="testimonials" className="py-16 bg-gradient-to-r from-blue-700 to-blue-900">
-                <div className="container px-4">
-                    <h2 className="text-3xl font-bold text-center text-white">Testimonials</h2>
-                    <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        {["This platform revolutionized our fraud detection processes!", "Excellent AI solutions for modern banking.", "Highly secure and reliable services."].map((testimonial, index) => (
-                            <Card key={index} className="bg-black/50 hover:shadow-md">
-                                <CardContent>
-                                    <p className="text-white">{testimonial}</p>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* FAQ Section */}
-            <section id="faq" className="py-16">
-                <div className="container px-4">
-                    <h2 className="text-3xl font-bold text-center">FAQs</h2>
-                    <div className="mt-8 space-y-6">
-                        {["How secure is the platform?", "What is Generative AI?", "How do I get started?"].map((faq, index) => (
-                            <Card key={index} className="bg-gradient-to-tr from-gray-800 to-black hover:shadow-md">
-                                <CardContent>
-                                    <h3 className="text-lg font-bold text-white">{faq}</h3>
-                                </CardContent>
-                            </Card>
                         ))}
                     </div>
                 </div>
             </section>
             
+                {/* Technical Architecture Section */}
+                <section id="solutions" className="relative z-10 py-16">
+                    <div className="container px-4">
+                    <motion.h2 
+                        className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#00f2fe] to-white bg-clip-text text-transparent"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                    >
+                        AI-Powered Defense Layers
+                    </motion.h2>
+                            
+                        
+                        <div className="grid gap-8 md:grid-cols-3">
+                            {[
+                                {
+                                    title: "Generative AI Core",
+                                    features: [
+                                        "Synthetic fraud pattern generation",
+                                        "Adaptive learning engine",
+                                        "Behavioral biometrics analysis"
+                                    ]
+                                },
+                                {
+                                    title: "Security Framework",
+                                    features: [
+                                        "Aadhaar-based authentication",
+                                        "Military-grade encryption",
+                                        "Real-time compliance monitoring"
+                                    ]
+                                },
+                                {
+                                    title: "Global Protection",
+                                    features: [
+                                        "Cross-border transaction screening",
+                                        "Jurisdictional risk scoring",
+                                        "Multilingual support"
+                                    ]
+                                }
+                            ].map((stack, index) => (
+                                <motion.div 
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <Card className="bg-black/50 backdrop-blur-xl border-[#00f2fe]/20 hover:shadow-[0_0_30px_#00f2fe]/20 transition-transform transform hover:scale-105 hover:border-[#00f2fe]">
+                                        <CardContent className="p-6">
+                                            <h3 className="text-lg font-bold text-[#00f2fe] mb-4">{stack.title}</h3>
+                                            <ul className="space-y-3">
+                                                {stack.features.map((feature, idx) => (
+                                                    <li key={idx} className="flex items-center gap-2 text-gray-300">
+                                                        <div className="h-2 w-2 bg-[#00f2fe] rounded-full" />
+                                                        {feature}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
-            {/* Footer */}
-            <footer className="border-t border-white/10 bg-black/70 backdrop-blur-xl">
-                <div className="container px-4 py-8">
-                    <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-                        {["About", "Services", "Support", "Legal"].map((section, index) => (
-                            <div key={index}>
-                                <h3 className="mb-3 text-sm font-medium text-white">{section}</h3>
-                                <ul className="space-y-2">
-                                    {["Link 1", "Link 2", "Link 3"].map((link, i) => (
-                                        <li key={i}><a href="#" className="text-sm hover:text-yellow-500">{link}</a></li>
+            {/* Compliance Section */}
+            <section id="compliance" className="py-16">
+                <div className="container px-4">
+                    <motion.div className="bg-gradient-to-r from-black to-[#001519] rounded-xl p-8 backdrop-blur-xl">
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <motion.div>
+                                <h3 className="text-2xl font-bold text-[#00f2fe] mb-4">Global Compliance Engine</h3>
+                                <p className="text-gray-300 mb-6">
+                                    Automated adherence to 120+ regulatory frameworks including:
+                                </p>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {["FATF Recommendations", "RBI Guidelines", "GDPR Standards", "PCI DSS"].map((item) => (
+                                        <div key={item} className="flex items-center gap-2 text-gray-300">
+                                            <Check className="h-4 w-4 text-[#00f2fe]" />
+                                            {item}
+                                        </div>
                                     ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="mt-8 border-t border-white/10 pt-6 text-center">
-                        <p className="text-sm text-white/70">© {new Date().getFullYear()} Cyber Bank. All rights reserved.</p>
-                    </div>
+                                </div>
+                            </motion.div>
+                            <motion.div className="bg-black/50 p-6 rounded-lg border border-[#00f2fe]/20">
+                                <div className="text-[#00f2fe] text-3xl font-bold mb-2">99.97%</div>
+                                <div className="text-gray-300">Compliance Accuracy Rate</div>
+                                <div className="mt-4 h-2 bg-gray-800 rounded-full">
+                                    <div className="h-2 bg-[#00f2fe] rounded-full w-[99.7%]" />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
                 </div>
-            </footer>
+            </section>
+            {/* CTA Section */}
+            <section className="py-16 relative z-10">
+                <div className="container px-4">
+                    <motion.div 
+                        className="bg-gradient-to-r from-[#001519] to-black rounded-xl p-8 text-center backdrop-blur-xl"
+                        initial={{ scale: 0.95 }}
+                        whileInView={{ scale: 1 }}
+                    >
+                        <h3 className="text-2xl font-bold text-[#00f2fe] mb-4">Ready to Transform Your Security?</h3>
+                        <p className="text-gray-300 mb-8">Schedule a demo to see our AI in action</p>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <Button className="bg-[#00f2fe] text-black hover:bg-[#00d9e6] transition-transform transform hover:scale-105 hover:shadow-[0_0_15px_#00f2fe]">
+                                Request Enterprise Demo
+                            </Button>
+                            <Button variant="outline" className="border-[#00f2fe] text-[#00f2fe] hover:bg-[#00f2fe]/10 transition-transform transform hover:scale-105 hover:shadow-[0_0_15px_#00f2fe]">
+                                Technical Documentation
+                            </Button>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
         </div>
     );
 }

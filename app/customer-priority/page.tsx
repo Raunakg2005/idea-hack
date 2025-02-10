@@ -33,17 +33,17 @@ export default function CustomerPriorityPage() {
   return (
     <div className="relative">
       <div className="absolute inset-0 pointer-events-none -z-10"></div>
-      <div className="absolute inset-0 pointer-events-none -z-10">
+      <div className="absolute inset-0 -z-10">
         <CircuitBackground />
       </div>
       <div className="relative z-10 w-full max-w-5xl mx-auto">
         <div className="container px-4 py-8">
-            <motion.div
+          <motion.div
             className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            >
+          >
             <h1 className="flex items-center gap-2 text-2xl font-bold text-[#00f2fe]">
               <Star className="h-6 w-6" />
               Customer Prioritization
@@ -52,7 +52,7 @@ export default function CustomerPriorityPage() {
               <UserCheck className="h-4 w-4" />
               Update Priority Levels
             </Button>
-            </motion.div>
+          </motion.div>
 
           <motion.div
             className="mb-8 grid gap-4 md:grid-cols-4"
@@ -71,7 +71,7 @@ export default function CustomerPriorityPage() {
                 variants={itemVariants}
                 whileHover="hover"
               >
-                <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl">
+                <Card className="border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_20px_#00f2fe] transition-shadow hover:scale-105 transform transition-transform hover:border-[#00f2fe] hover:border-2">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium text-[#00f2fe]/90">{stat.title}</CardTitle>
                     <stat.icon className="h-4 w-4 text-[#00f2fe]" />
@@ -84,7 +84,7 @@ export default function CustomerPriorityPage() {
             ))}
           </motion.div>
 
-          <Card className="mb-8 border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl">
+          <Card className="mb-8 border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl hover:shadow-[0_0_20px_#00f2fe] transition-shadow hover:scale-105 transform transition-transform hover:border-[#00f2fe] hover:border-2">
             <CardHeader>
               <CardTitle className="text-[#00f2fe]">Priority Customers</CardTitle>
             </CardHeader>
@@ -122,7 +122,7 @@ export default function CustomerPriorityPage() {
                     key={index}
                     variants={customerVariants}
                     whileHover="hover"
-                    className="rounded-lg border border-[#00f2fe]/10 bg-background/50 p-4"
+                    className="rounded-lg border border-[#00f2fe]/10 bg-background/50 p-4 hover:border-[#00f2fe] hover:border-2"
                   >
                     <div className="flex flex-wrap items-center gap-4">
                       <div className="flex-1">

@@ -20,25 +20,35 @@ export default function CustomerProfilingPage() {
 
       <div className="relative z-10">
         {/* Header */}
-        <header className="border-b border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl">
-          <div className="container flex h-16 items-center justify-between px-4">
+        <motion.header
+          className="border-b border-[#00f2fe]/10 bg-background/50 backdrop-blur-xl"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="container mx-auto flex h-16 items-center justify-between px-4">
             <div className="flex items-center gap-4">
               <h1 className="flex items-center gap-2 text-xl font-bold text-[#00f2fe]">
                 <UserCheck className="h-5 w-5" />
                 Customer Profiling & Onboarding
               </h1>
             </div>
-            <Button variant="outline" className="gap-2">
+            <Button className="border-[#00f2fe] text-[#00f2fe] hover:shadow-[0_0_10px_#00f2fe] gap-2">
               <Shield className="h-4 w-4" />
               Security Level: High
             </Button>
           </div>
-        </header>
+        </motion.header>
 
         {/* Main Content */}
-        <main className="container px-4 py-8 space-y-8">
+        <motion.main
+          className="container mx-auto px-4 py-8 space-y-8"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {/* Progress Overview */}
-          <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl">
+          <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                 <FileCheck className="h-5 w-5" />
@@ -48,7 +58,7 @@ export default function CustomerProfilingPage() {
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <Progress value={75} className="h-2" />
+                  <Progress value={75} className="h-2 bg-[#00f2fe]/30" />
                   <span className="text-sm text-[#00f2fe]">75%</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -58,17 +68,18 @@ export default function CustomerProfilingPage() {
                     { title: "Biometrics Recorded", icon: Fingerprint, complete: true },
                     { title: "Final Approval", icon: CheckCircle, complete: false },
                   ].map((step, index) => (
-                    <div
+                    <motion.div
                       key={index}
+                      whileHover={{ scale: 1.05 }}
                       className={`flex items-center gap-2 rounded-lg border border-[#00f2fe]/10 p-3 ${
                         step.complete ? "bg-[#00f2fe]/10" : "bg-transparent"
-                      }`}
+                      } hover:shadow-[0_0_10px_#00f2fe]`}
                     >
                       <step.icon className={`h-4 w-4 ${step.complete ? "text-[#00f2fe]" : "text-[#00f2fe]/40"}`} />
                       <span className={`text-sm ${step.complete ? "text-[#00f2fe]" : "text-[#00f2fe]/40"}`}>
                         {step.title}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -84,7 +95,7 @@ export default function CustomerProfilingPage() {
 
             <TabsContent value="verification">
               <div className="grid gap-4 md:grid-cols-2">
-                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl">
+                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                       <AlertTriangle className="h-5 w-5" />
@@ -108,13 +119,13 @@ export default function CustomerProfilingPage() {
                         ),
                       )}
                     </ul>
-                    <Button variant="outline" className="gap-2 mt-4">
+                    <Button className="border-[#00f2fe] text-[#00f2fe] hover:shadow-[0_0_10px_#00f2fe] gap-2 mt-4">
                       Download Documents
                     </Button>
                   </CardContent>
                 </Card>
 
-                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl">
+                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                       <Shield className="h-5 w-5" />
@@ -140,7 +151,7 @@ export default function CustomerProfilingPage() {
                             <span className="text-[#00f2fe]/90">{check.name}</span>
                             <span className="text-[#00f2fe]">{check.progress}%</span>
                           </div>
-                          <Progress value={check.progress} className="h-1" />
+                          <Progress value={check.progress} className="h-1 bg-[#00f2fe]/30" />
                         </motion.div>
                       ))}
                     </div>
@@ -151,7 +162,7 @@ export default function CustomerProfilingPage() {
 
             <TabsContent value="biometrics">
               <div className="grid gap-4 md:grid-cols-2">
-                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl">
+                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                       <Camera className="h-5 w-5" />
@@ -168,7 +179,7 @@ export default function CustomerProfilingPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl">
+                <Card className="border-[#00f2fe]/10 bg-transparent backdrop-blur-xl hover:shadow-[0_0_10px_#00f2fe] transition-shadow">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#00f2fe]">
                       <Fingerprint className="h-5 w-5" />
@@ -178,12 +189,16 @@ export default function CustomerProfilingPage() {
                   <CardContent>
                     <div className="grid grid-cols-2 gap-4">
                       {[1, 2, 3, 4].map((index) => (
-                        <div key={index} className="aspect-square rounded-lg border border-[#00f2fe]/20 bg-black/50 p-4">
+                        <motion.div
+                          key={index}
+                          whileHover={{ scale: 1.05 }}
+                          className="aspect-square rounded-lg border border-[#00f2fe]/20 bg-black/50 p-4 hover:shadow-[0_0_10px_#00f2fe]"
+                        >
                           <div className="flex h-full flex-col items-center justify-center gap-2">
                             <Fingerprint className="h-6 w-6 text-[#00f2fe]" />
                             <span className="text-xs text-[#00f2fe]/70">Print {index}</span>
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </CardContent>
@@ -191,7 +206,7 @@ export default function CustomerProfilingPage() {
               </div>
             </TabsContent>
           </Tabs>
-        </main>
+        </motion.main>
       </div>
     </motion.div>
   )
