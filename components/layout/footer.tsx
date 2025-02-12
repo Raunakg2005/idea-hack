@@ -106,10 +106,10 @@ const Footer = ({ className = "" }: FooterProps) => {
 
         <div className="mt-4 w-3/4 relative overflow-hidden">
           <motion.div
-            className="bg-[#00f2fe] h-0.5 w-full"
-            initial={{ x: "-100%" }}
-            animate={{ x: "100%" }}
-            transition={{ duration: 3, repeat: Infinity }}
+        className="bg-[#00f2fe] h-0.5 w-full"
+        initial={{ x: "-100%" }}
+        animate={{ x: "100%" }}
+        transition={{ duration: 3, repeat: Infinity }}
           />
         </div>
 
@@ -117,6 +117,8 @@ const Footer = ({ className = "" }: FooterProps) => {
           System Secure | Last Scan: {lastScanTime}
         </div>
       </div>
+
+      <div className="mt-8"></div>
     </footer>
   );
 };

@@ -1,34 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Lock, Crosshair, Network, UserCheck, Server, Globe, Activity, Check } from "lucide-react";
+import { ArrowRight, Lock, Zap, Fingerprint, Shield, Crosshair, Network, UserCheck, Server, Globe, Activity, Check } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-field";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { HexGridBackground } from "@/components/backgrounds/hex-grid-background";
 import { DataStreamBackground } from "@/components/backgrounds/data-stream-background";
 import { MatrixBackground } from "@/components/backgrounds/matrix-background";
 import { CircuitBackground } from "@/components/backgrounds/circuit-background";
+import Link from "next/link";
 
-export default function LandingPage() {
+export default function HomePage() {
     return (
         <div className="relative min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white overflow-hidden">
             {/* Particle Background with Custom Color */}
             <div className="absolute inset-0 z-0">
-                <ParticleBackground/>
+                <ParticleBackground />
                 <HexGridBackground />
                 <MatrixBackground />
                 <CircuitBackground />
                 <DataStreamBackground />
-                
             </div>
-
-            
 
             {/* Hero Section with Core Value Proposition */}
             <section className="relative z-10 flex min-h-[80vh] items-center justify-center px-4">
                 <div className="container text-center">
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl mb-6"
@@ -37,7 +35,7 @@ export default function LandingPage() {
                             AI-Powered Financial Protection
                         </span>
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                         className="mx-auto mt-6 max-w-2xl text-lg text-gray-300"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -45,7 +43,7 @@ export default function LandingPage() {
                     >
                         Next-generation fraud prevention combining generative AI, real-time analytics, and Aadhaar-based security
                     </motion.p>
-                    <motion.div 
+                    <motion.div
                         className="mt-8"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -61,7 +59,7 @@ export default function LandingPage() {
             {/* Core Capabilities Section */}
             <section id="solutions" className="relative z-10 py-16">
                 <div className="container px-4">
-                    <motion.h2 
+                    <motion.h2
                         className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#00f2fe] to-white bg-clip-text text-transparent"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -70,28 +68,28 @@ export default function LandingPage() {
                     </motion.h2>
                     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                         {[
-                            { 
-                                icon: Crosshair, 
-                                title: "Real-Time Anomaly Detection", 
-                                description: "Generative AI models analyzing 50+ transaction parameters in <50ms" 
+                            {
+                                icon: Crosshair,
+                                title: "Real-Time Anomaly Detection",
+                                description: "Generative AI models analyzing 50+ transaction parameters in <50ms"
                             },
-                            { 
-                                icon: Network, 
-                                title: "Cross-Border Intelligence", 
-                                description: "Dynamic risk scoring for international transactions across 150+ jurisdictions" 
+                            {
+                                icon: Network,
+                                title: "Cross-Border Intelligence",
+                                description: "Dynamic risk scoring for international transactions across 150+ jurisdictions"
                             },
-                            { 
-                                icon: UserCheck, 
-                                title: "Insider Threat Radar", 
-                                description: "Employee behavior analysis with 99.8% accuracy in unauthorized access detection" 
+                            {
+                                icon: UserCheck,
+                                title: "Insider Threat Radar",
+                                description: "Employee behavior analysis with 99.8% accuracy in unauthorized access detection"
                             },
-                            { 
-                                icon: Server, 
-                                title: "Edge Processing", 
-                                description: "Aadhaar-secured transactions in low-connectivity regions" 
+                            {
+                                icon: Server,
+                                title: "Edge Processing",
+                                description: "Aadhaar-secured transactions in low-connectivity regions"
                             }
                         ].map((feature, index) => (
-                            <motion.div 
+                            <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -109,71 +107,70 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
-            
-                {/* Technical Architecture Section */}
-                <section id="solutions" className="relative z-10 py-16">
-                    <div className="container px-4">
-                    <motion.h2 
+
+            {/* Technical Architecture Section */}
+            <section id="solutions" className="relative z-10 py-16">
+                <div className="container px-4">
+                    <motion.h2
                         className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#00f2fe] to-white bg-clip-text text-transparent"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                     >
                         AI-Powered Defense Layers
                     </motion.h2>
-                            
-                        
-                        <div className="grid gap-8 md:grid-cols-3">
-                            {[
-                                {
-                                    title: "Generative AI Core",
-                                    features: [
-                                        "Synthetic fraud pattern generation",
-                                        "Adaptive learning engine",
-                                        "Behavioral biometrics analysis"
-                                    ]
-                                },
-                                {
-                                    title: "Security Framework",
-                                    features: [
-                                        "Aadhaar-based authentication",
-                                        "Military-grade encryption",
-                                        "Real-time compliance monitoring"
-                                    ]
-                                },
-                                {
-                                    title: "Global Protection",
-                                    features: [
-                                        "Cross-border transaction screening",
-                                        "Jurisdictional risk scoring",
-                                        "Multilingual support"
-                                    ]
-                                }
-                            ].map((stack, index) => (
-                                <motion.div 
-                                    key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                    viewport={{ once: true }}
-                                >
-                                    <Card className="bg-black/50 backdrop-blur-xl border-[#00f2fe]/20 hover:shadow-[0_0_30px_#00f2fe]/20 transition-transform transform hover:scale-105 hover:border-[#00f2fe]">
-                                        <CardContent className="p-6">
-                                            <h3 className="text-lg font-bold text-[#00f2fe] mb-4">{stack.title}</h3>
-                                            <ul className="space-y-3">
-                                                {stack.features.map((feature, idx) => (
-                                                    <li key={idx} className="flex items-center gap-2 text-gray-300">
-                                                        <div className="h-2 w-2 bg-[#00f2fe] rounded-full" />
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
+
+                    <div className="grid gap-8 md:grid-cols-3">
+                        {[
+                            {
+                                title: "Generative AI Core",
+                                features: [
+                                    "Synthetic fraud pattern generation",
+                                    "Adaptive learning engine",
+                                    "Behavioral biometrics analysis"
+                                ]
+                            },
+                            {
+                                title: "Security Framework",
+                                features: [
+                                    "Aadhaar-based authentication",
+                                    "Military-grade encryption",
+                                    "Real-time compliance monitoring"
+                                ]
+                            },
+                            {
+                                title: "Global Protection",
+                                features: [
+                                    "Cross-border transaction screening",
+                                    "Jurisdictional risk scoring",
+                                    "Multilingual support"
+                                ]
+                            }
+                        ].map((stack, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <Card className="bg-black/50 backdrop-blur-xl border-[#00f2fe]/20 hover:shadow-[0_0_30px_#00f2fe]/20 transition-transform transform hover:scale-105 hover:border-[#00f2fe]">
+                                    <CardContent className="p-6">
+                                        <h3 className="text-lg font-bold text-[#00f2fe] mb-4">{stack.title}</h3>
+                                        <ul className="space-y-3">
+                                            {stack.features.map((feature, idx) => (
+                                                <li key={idx} className="flex items-center gap-2 text-gray-300">
+                                                    <div className="h-2 w-2 bg-[#00f2fe] rounded-full" />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
+                        ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
             {/* Compliance Section */}
             <section id="compliance" className="py-16">
@@ -205,10 +202,11 @@ export default function LandingPage() {
                     </motion.div>
                 </div>
             </section>
+
             {/* CTA Section */}
             <section className="py-16 relative z-10">
                 <div className="container px-4">
-                    <motion.div 
+                    <motion.div
                         className="bg-gradient-to-r from-[#001519] to-black rounded-xl p-8 text-center backdrop-blur-xl"
                         initial={{ scale: 0.95 }}
                         whileInView={{ scale: 1 }}

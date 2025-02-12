@@ -1,99 +1,132 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Bell, User, Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [notifications, setNotifications] = useState(3);
+  const [notifications] = useState(3);
 
   const links = ["Dashboard", "Alerts", "Transactions", "Analytics", "Profile"];
 
   return (
-    <nav className="bg-[rgba(10,10,10,0.95)] text-white fixed w-full z-50 shadow-lg">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo Section */}
-        <motion.div
-          className="text-xl font-bold text-[#00f2fe] cursor-pointer"
-          initial={{ scale: 1 }}
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          Union Bank of India
-        </motion.div>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex space-x-6 items-center">
-          {links.map((link, index) => (
-            <motion.a
-              key={index}
-              href="#"
-              className="relative hover:text-[#00f2fe] cursor-pointer"
-              whileHover={{ scale: 1.1 }}
-            >
-              {link}
-              <motion.div
-                className="h-0.5 bg-[#00f2fe] absolute left-0 right-0 mx-auto w-0"
-                initial={{ width: 0 }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.a>
-          ))}
-        </div>
-
-        {/* Icons Section */}
-        <div className="flex space-x-4 items-center">
-          {/* Notification Bell */}
+    <nav className="bg-[rgba(10,10,10,0.95)] backdrop-blur-lg border-b border-white/10 text-white fixed top-0 left-0 right-0 z-50 shadow-xl h-16">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo Section */}
           <motion.div
-            className="relative cursor-pointer"
-            whileHover={{ scale: 1.1 }}
+            className="flex items-center flex-shrink-0"
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.02, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
           >
-            <Bell className="w-6 h-6 text-white" />
-            {notifications > 0 && (
+            <span className="text-xl font-bold bg-gradient-to-r from-[#00f2fe] to-[#4facfe] bg-clip-text text-transparent">
+              Union Bank of India
+            </span>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-6 flex-1 justify-center">
+            {links.map((link, index) => (
               <motion.div
-                className="absolute -top-2 -right-2 bg-[#FF0000] text-xs text-white w-5 h-5 rounded-full flex items-center justify-center"
-                initial={{ scale: 1 }}
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
+                key={index}
+                className="relative"
+                whileHover="hover"
+                initial="rest"
               >
-                {notifications}
+                <a
+                  href="#"
+                  className="px-3 py-2 text-sm font-medium hover:text-[#00f2fe] transition-colors duration-200"
+                >
+                  {link}
+                </a>
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#00f2fe]"
+                  variants={{
+                    rest: { scaleX: 0 },
+                    hover: { scaleX: 1 }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
               </motion.div>
-            )}
-          </motion.div>
+            ))}
+          </div>
 
-          {/* User Profile */}
-          <motion.div
-            className="cursor-pointer flex items-center space-x-2"
-            whileHover={{ scale: 1.05 }}
-          >
-            <User className="w-6 h-6 text-white" />
-            <span className="hidden md:inline">Profile</span>
-          </motion.div>
+          {/* Right Section */}
+          <div className="flex items-center space-x-4 md:space-x-6">
+            {/* Notification Bell */}
+            <motion.button
+              className="p-1.5 relative rounded-lg hover:bg-white/10 transition-colors duration-200"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Bell className="w-5 h-5" />
+              {notifications > 0 && (
+                <motion.div
+                  className="absolute -top-1 -right-1 bg-red-500 text-xs w-4 h-4 rounded-full flex items-center justify-center"
+                  initial={{ scale: 1 }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                >
+                  {notifications}
+                </motion.div>
+              )}
+            </motion.button>
 
-          {/* Hamburger Menu */}
-          <div className="md:hidden cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {/* User Profile */}
+            <motion.button
+              className="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-white/10 transition-colors duration-200"
+              whileHover={{ scale: 1.05 }}
+            >
+              <User className="w-5 h-5" />
+              <span className="hidden md:inline text-sm font-medium">Profile</span>
+            </motion.button>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors duration-200"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="bg-[#0A0A0A] text-white md:hidden space-y-4 py-4"
-        >
-          {links.map((link, index) => (
-            <a key={index} href="#" className="block px-4 py-2 hover:bg-[#1A1A1A]">
-              {link}
-            </a>
-          ))}
-        </motion.div>
-      )}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-white/5 backdrop-blur-sm border-t border-white/10 mt-2"
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {links.map((link, index) => (
+                  <motion.a
+                    key={index}
+                    href="#"
+                    className="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors duration-200"
+                    initial={{ x: -20 }}
+                    animate={{ x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {link}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </nav>
   );
 };
